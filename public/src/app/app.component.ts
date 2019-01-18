@@ -27,11 +27,10 @@ CreateTaskInService(){
 }
 
 updateTaskInService(id){
-  console.log(this.updateTask);
   let observable = this._httpService.updateTask(id,this.Atask);
   observable.subscribe(data=>{
     console.log("Got data back from form",data);
-    this.updateTask = {title:"", description:""}
+
 })
 } 
 getTasksFromService(){
