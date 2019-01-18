@@ -1,0 +1,39 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  
+  <button (click)="onButtonClick()">Get All Tasks!</button>
+  <form (submit)="CreateTaskInService()" class="postForm">
+    <label>Task title:
+    <input type="text" name="newTask.title"[(ngModel)]="newTask.title"/>
+  </label>
+  <label>Task description:
+    <input type="text" name="newTask.description" [(ngModel)]="newTask.description" />
+    <input type="submit" value="Create Task"/>
+  </label>
+  </form>
+  <div *ngIf="Atask">
+    <h2>Title: {{Atask.title}}</h2>
+    <h3>Description: {{Atask.description}}</h3>
+    <button (click)="onButtonClickUpdate(Atask._id)">Update</button>
+    <div *ngIf="update">
+        <form (submit)="updateTaskInService(Atask._id)" class="postForm">
+            <label>Task title:
+            <input type="text" name="Atask.title"[(ngModel)]="Atask.title"/>
+          </label>
+          <label>Task description:
+            <input type="text"  name="Atask.description" [(ngModel)]="Atask.description" />
+            <input type="submit" value="Update Task"/>
+          </label>
+          </form>
+    </div>
+</div>
+  <div *ngIf="tasks">
+    <div *ngFor="let t of tasks">
+      <h1>Task: {{ t.title }}! </h1>
+      <button (click)="onButtonClickId(t._id)">Show</button>
+      <button (click)="onButtonClickdelete(t._id)">delete</button>
+    </div>
+</div>
+</div>
+
+
